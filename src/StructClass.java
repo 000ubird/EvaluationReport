@@ -27,6 +27,16 @@ public class StructClass {
 	}
 	
 	/**
+	 * オブジェクトの情報をCSV形式の文字列にする
+	 * @return CSV形式の文字列
+	 */
+	public String getMethodCsv(){
+		String buf = "";
+		for(Class<?> inter : interfaces) buf += inter+",";
+		return "Class,"+name+","+modifiers+","+inheritance+","+buf;
+	}
+	
+	/**
 	 * クラスの修飾子の種類を文字列で返す
 	 * @param mods 修飾子の種類を表すint型の数値
 	 * @return 修飾子を表す文字列
