@@ -52,6 +52,16 @@ public class StructField {
 	}
 	
 	@Override
+	public boolean equals(Object o){
+		StructField sf = (StructField)o;
+		if(this.name.equals(sf.name) == false) 			 return false;
+		if(this.fieldType.equals(sf.fieldType) == false) return false;
+		if(this.modifier.equals(sf.modifier) == false)   return false;
+			
+		return true;
+	}
+	
+	@Override
 	public String toString(){
 		return modifier+ " => " +name+ " : " +fieldType;
 	}
