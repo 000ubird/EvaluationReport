@@ -14,7 +14,13 @@ public class StructField {
 	public StructField(){
 	}
 	
-	public StructField(String name,Class type,int mod){
+	/**
+	 * 引数有りのコンストラクタ
+	 * @param name	フィールド変数名
+	 * @param type	フィールド変数の型
+	 * @param mod	フィールド変数の修飾子の値
+	 */
+	public StructField(String name,Class<?> type,int mod){
 		this.name = name;
 		this.fieldType = type;
 		this.modifier = getModifierType(mod);
@@ -34,6 +40,11 @@ public class StructField {
 		if(Modifier.isFinal(mod)) buf = "final";
 		
 		return buf;
+	}
+	
+	@Override
+	public String toString(){
+		return modifier+ " => " +name+ " : " +fieldType;
 	}
 
 }
