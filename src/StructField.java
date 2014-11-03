@@ -8,7 +8,7 @@ import java.lang.reflect.Modifier;
  */
 public class StructField {
 	private String name;		//フィールド変数名
-	private Class<?> fieldType;	//フィールド変数の型
+	private String fieldType;	//フィールド変数の型
 	private String modifier;	//フィールド変数の修飾子
 	
 	public StructField(){
@@ -22,7 +22,7 @@ public class StructField {
 	 */
 	public StructField(String name,Class<?> type,int mod){
 		this.name = name;
-		this.fieldType = type;
+		this.fieldType = type.getName();
 		this.modifier = getModifierType(mod);
 	}
 	
@@ -40,6 +40,15 @@ public class StructField {
 		if(Modifier.isFinal(mod)) buf = "final";
 		
 		return buf;
+	}
+	
+	/**
+	 * オブジェクトの情報をCSV形式の文字列にする
+	 * フォーマット(サンプル)-> Field | 修飾子 | 型 | フィールド名
+	 * @return CSV形式の文字列
+	 */
+	public String getFieldCSV(){
+		return "Field,"+modifier+","+fieldType+","+name;
 	}
 	
 	@Override
