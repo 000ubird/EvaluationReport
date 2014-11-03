@@ -52,6 +52,19 @@ public class StructClass {
 	}
 	
 	@Override
+	public boolean equals(Object o){
+		StructClass sc = (StructClass)o;
+		
+		if(this.name.equals(sc.name) == false) return false;
+		if(this.modifiers.equals(sc.modifiers) == false)return false;
+		if(this.inheritance.equals(sc.inheritance) == false) return false;
+		for(int i=0;i<this.interfaces.length;i++){
+			if(this.interfaces[i].equals(sc.interfaces[i])==false)return false;
+		}
+		return true;
+	}
+	
+	@Override
 	public String toString(){
 		String buf = "";
 		for(Class<?> inter : interfaces) buf += inter+" , ";
