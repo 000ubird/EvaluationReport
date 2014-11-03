@@ -41,4 +41,11 @@ public class StructClass {
 		return buf;
 	}
 	
+	@Override
+	public String toString(){
+		String buf = "";
+		for(Class<?> inter : interfaces) buf += inter+" , ";
+		return "Name => "+name+" , Modifier => "+modifiers+
+				" , SuperClass => "+inheritance+" , Interfaces => "+ buf;
+	}
 }
