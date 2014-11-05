@@ -26,4 +26,11 @@ public class StructMethod {
 		this.paramType = paramType;
 	}
 	
+	@Override
+	public String toString(){
+		String buf = "";
+		for(Class<?> c : paramType) buf += c.getName() + ",";
+		
+		return "Name => "+name+" , return => "+returnType+" , paramType => "+buf;
+	}
 }
