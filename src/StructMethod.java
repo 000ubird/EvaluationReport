@@ -31,6 +31,6 @@ public class StructMethod {
 		String buf = "";
 		for(Class<?> c : paramType) buf += c.getName() + ",";
 		
-		return "Name => "+name+" , return => "+returnType+" , paramType => "+buf;
+		return "Method Name => "+name+" , return => "+returnType+" , paramType => "+buf;
 	}
 }

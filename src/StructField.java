@@ -63,7 +63,7 @@ public class StructField {
 	
 	@Override
 	public String toString(){
-		return modifier+ " => " +name+ " : " +fieldType;
+		return "Field  "+modifier+ " => " +name+ " : " +fieldType;
 	}
 
 }
