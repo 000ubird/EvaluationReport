@@ -1,9 +1,10 @@
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class Main {
 	private static String CLASSPATH = "./bin/ans/";		//クラスファイルのディレクトリ
-	private static String CLASSNAME = "LineSegment";			//読み込む.classファイル名
+	private static String CLASSNAME = "LineSegment";	//読み込む.classファイル名
 	
 	public static void main(String[] args) throws Exception{
 		//クラスファイル読み込み
@@ -11,11 +12,11 @@ public class Main {
 	    Class<?> c = Class.forName(CLASSNAME, true, loader);
 	    System.out.println(c);
 	    
-	    //クラス名取得
+	    //クラス情報取得
 		StructClass sc = new StructClass(c);
 		System.out.println(sc);
 	    
-		//メソッド取得 この処理はClassStructureクラスに記述予定
+		//メソッド情報取得 この処理はClassStructureクラスに記述予定
 		Method[] methods = c.getMethods();
 		for(Method method : methods){
 			String name = method.getName();							//メソッド名取得
@@ -26,6 +27,14 @@ public class Main {
 			System.out.println(sm);
 		}
 		
+		//コンストラクタ情報取得 この処理はClassStructureクラスに記述予定
+	    Constructor<?>[] constructors = c.getConstructors();
+	    for(Constructor<?> constructor : constructors){
+	    	Class<?>[] paramType = constructor.getParameterTypes();
+	    	StructConstructor sCons = new StructConstructor(paramType);
+	    	System.out.println(sCons);
+	    }
+	    
 	    //フィールド取得 この処理はClassStructureクラスに記述予定
 	    Field[] fields = c.getDeclaredFields();
 	    for(Field field : fields){
