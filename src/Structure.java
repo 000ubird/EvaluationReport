@@ -51,6 +51,22 @@ public class Structure {
 		}
 	}
 	
+	public StructClass getsClass() {
+		return sClass;
+	}
+
+	public ArrayList<StructField> getsField() {
+		return sField;
+	}
+
+	public ArrayList<StructConstructor> getsConst() {
+		return sConst;
+	}
+
+	public ArrayList<StructMethod> getsMethod() {
+		return sMethod;
+	}
+	
 	@Override
 	public String toString() {
 		return sClass+"\n"+sField+"\n"+sConst+"\n"+sMethod;

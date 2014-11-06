@@ -23,6 +23,17 @@ public class StructMethod {
 		this.paramType = paramType;
 	}
 	
+	/**
+	 * メソッド情報をCSV形式の文字列にする
+	 * フォーマット(サンプル)-> Method | メソッド名 | param -> 引数の型 | ...| 返り値の型
+	 * @return CSV形式の文字列
+	 */
+	public String getCSV(){
+		String buf = "";
+		for(Class<?> c :paramType) buf += "param -> "+c.getName()+",";
+		return "Method,"+name+","+buf+returnType;
+	}
+	
 	@Override
 	public String toString(){
 		String buf = "";

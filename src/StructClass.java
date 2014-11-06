@@ -24,13 +24,14 @@ public class StructClass {
 	}
 	
 	/**
-	 * オブジェクトの情報をCSV形式の文字列にする
+	 * クラスの情報をCSV形式の文字列にする
+	 * フォーマット(サンプル)-> Class | 修飾子 | クラス名 | 継承 | インターフェース |
 	 * @return CSV形式の文字列
 	 */
-	public String getMethodCsv(){
+	public String getCsv(){
 		String buf = "";
 		for(Class<?> inter : interfaces) buf += inter+",";
-		return "Class,"+name+","+modifiers+","+inheritance+","+buf;
+		return "Class,"+modifiers+","+name+","+inheritance+","+buf;
 	}
 	
 	/**

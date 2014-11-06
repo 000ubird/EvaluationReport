@@ -25,7 +25,7 @@ public class StructField {
 	
 	/**
 	 * フィールド変数の修飾子の種類を文字列で返す
-	 * @param mod 修飾子の種類を表すint型の数値
+	 * @param mod 修飾子の種類を表す数値
 	 * @return 修飾子を表す文字列
 	 */
 	public static String getModifierType(int mod){
@@ -40,11 +40,11 @@ public class StructField {
 	}
 	
 	/**
-	 * オブジェクトの情報をCSV形式の文字列にする
+	 * フィールドの情報をCSV形式の文字列にする
 	 * フォーマット(サンプル)-> Field | 修飾子 | 型 | フィールド名
 	 * @return CSV形式の文字列
 	 */
-	public String getFieldCSV(){
+	public String getCSV(){
 		return "Field,"+modifier+","+fieldType+","+name;
 	}
 	
