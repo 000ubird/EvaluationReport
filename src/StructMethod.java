@@ -11,9 +11,6 @@ public class StructMethod {
 	private String returnType;		//返り値の型
 	private Class<?>[] paramType;	//引数の型
 	
-	public StructMethod() {
-	}
-	
 	/**
 	 * 引数有りのコンストラクタ
 	 * @param name			フィールド名

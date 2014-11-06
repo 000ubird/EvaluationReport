@@ -12,9 +12,6 @@ public class StructClass {
 	private Class<?> inheritance;	//継承
 	private Class<?>[] interfaces;	//インターフェース
 	
-	public StructClass(){
-	}
-	
 	/**
 	 * クラスを引数に取ってコンストラクタを生成
 	 * @param c	クラス

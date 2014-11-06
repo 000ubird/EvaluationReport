@@ -14,9 +14,6 @@ public class Structure {
 	private ArrayList<StructConstructor> sConst;	//コンストラクタ情報
 	private ArrayList<StructMethod> sMethod;		//メソッド情報
 	
-	public Structure() {
-	}
-	
 	/**
 	 * クラスを引数に取りクラス構造を生成するコンストラクタ
 	 * リフレクションAPIを使用

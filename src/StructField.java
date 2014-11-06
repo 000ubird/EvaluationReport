@@ -11,9 +11,6 @@ public class StructField {
 	private String fieldType;	//フィールド変数の型
 	private String modifier;	//フィールド変数の修飾子
 	
-	public StructField(){
-	}
-	
 	/**
 	 * 引数有りのコンストラクタ
 	 * @param name	フィールド変数名

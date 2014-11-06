@@ -8,9 +8,6 @@
 public class StructConstructor {
 	private Class<?>[] paramTypes;	//コンストラクタの引数の型
 	
-	public StructConstructor(){
-	}
-	
 	/**
 	 * 「コンストラクタの引数の型」を引数に取るコンストラクタ
 	 * @param paramTypes コンストラクタの引数の型
