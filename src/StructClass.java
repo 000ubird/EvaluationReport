@@ -56,9 +56,14 @@ public class StructClass {
 		if(this.name.equals(sc.name) == false) return false;
 		if(this.modifiers.equals(sc.modifiers) == false)return false;
 		if(this.inheritance.equals(sc.inheritance) == false) return false;
-		for(int i=0;i<this.interfaces.length;i++){
-			if(this.interfaces[i].equals(sc.interfaces[i])==false)return false;
+		try{
+			for(int i=0;i<this.interfaces.length;i++){
+				if(this.interfaces[i].equals(sc.interfaces[i])==false)return false;
+			}
+		}catch(ArrayIndexOutOfBoundsException e){
+			return false;
 		}
+		
 		return true;
 	}
 	

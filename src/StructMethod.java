@@ -35,6 +35,22 @@ public class StructMethod {
 	}
 	
 	@Override
+	public boolean equals(Object o){
+		StructMethod sm = (StructMethod)o;
+		if(this.name.equals(sm.name) == false) return false;
+		if(this.returnType.equals(sm.returnType) == false) return false;
+		try{
+			for(int i=0;i<this.paramType.length;i++){
+				if(this.paramType[i].equals(sm.paramType[i])==false) return false;
+			}	
+		}catch(ArrayIndexOutOfBoundsException e){
+			return false;
+		}
+
+		return true;
+	}
+
+	@Override
 	public String toString(){
 		String buf = "";
 		for(Class<?> c : paramType) buf += c.getName() + ",";
