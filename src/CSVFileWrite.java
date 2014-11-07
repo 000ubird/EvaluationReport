@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 import java.io.IOException;
 
 public class CSVFileWrite {
-	private static String PATH = "./";				//出力するCSVファイルのパス
+	private static String PATH = "./csv/";				//出力するCSVファイルのパス
 
 	/**
 	 * 文字列をCSVファイルに出力する
