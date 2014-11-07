@@ -25,13 +25,13 @@ public class StructMethod {
 	
 	/**
 	 * メソッド情報をCSV形式の文字列にする
-	 * フォーマット(サンプル)-> Method | メソッド名 | param -> 引数の型 | ...| 返り値の型
+	 * フォーマット(サンプル)-> Method | 返り値の型 | param -> 引数の型 | ...| メソッド名
 	 * @return CSV形式の文字列
 	 */
 	public String getCSV(){
 		String buf = "";
 		for(Class<?> c :paramType) buf += "param -> "+c.getName()+",";
-		return "Method,"+name+","+buf+returnType;
+		return "Method,"+returnType+","+buf+name;
 	}
 	
 	@Override

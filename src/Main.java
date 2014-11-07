@@ -11,20 +11,13 @@ public class Main {
 	    ClassLoader testLoader = ReadClass.createClassLoader(TEST_CLASSPATH);
 	    Class<?> ansClass  = Class.forName(ANS_CLASSNAME, true, ansLoader);
 	    Class<?> testClass = Class.forName(TEST_CLASSNAME,true, testLoader);
-	    System.out.println(ansClass);
-	    System.out.println(testClass);
 	    
 	    //クラス情報生成
 	    Structure s1 = new Structure(ansClass);
-	    System.out.println(s1);
 	    Structure s2 = new Structure(testClass);
-	    System.out.println(s2);
 	    
 	    //CSV文字列出力テスト
-	    System.out.println("=== test for CSV output ===");
-	    System.out.println(s1.getsClass().getCsv());
-	    CSVFileWrite.out(s1.getsClass().getCsv(),"classInfo");
-	    for(StructField sf : s1.getsField()) System.out.println(sf.getCSV());
-	    for(StructMethod sm : s1.getsMethod()) System.out.println(sm.getCSV());
+	    CSVFileWrite.out(s1.getCSV(),"AnsClassInfo");
+	    CSVFileWrite.out(s2.getCSV(),"TestClassInfo");
 	}
 }

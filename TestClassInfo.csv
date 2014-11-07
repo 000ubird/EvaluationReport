@@ -1,0 +1,24 @@
+class,none,LineSegment,Extends class java.lang.Object,interface Group,
+Field,none,Point,start
+Field,none,Point,end
+Field,none,Point,movelength
+Field,none,Point,center
+Field,none,Point,original_s
+Field,none,Point,original_e
+Field,none,double,linelength
+Field,none,int,count_tm
+Field,none,int,count_ts
+Field,none,int,number
+Field,none,[LLineSegment;,group
+Field,none,int,checkcount
+Method,void,add
+Method,java.lang.String,toString
+Method,void,delete
+Method,void,wait
+Method,void,param -> long,param -> int,wait
+Method,void,param -> long,wait
+Method,boolean,param -> java.lang.Object,equals
+Method,int,hashCode
+Method,java.lang.Class,getClass
+Method,void,notify
+Method,void,notifyAll

@@ -51,6 +51,21 @@ public class Structure {
 		}
 	}
 	
+	/**
+	 * クラス構造情報を1つのCSV形式の文字列にまとめたデータを取得する
+	 * @return それぞれの情報をまとめたCSV形式の文字列
+	 */
+	public String getCSV(){
+		String buf = "";
+		
+	    buf += sClass.getCSV()+"\n";
+	    for(StructField sf : sField) buf += sf.getCSV()+"\n";
+	    for(StructConstructor sc : sConst) buf+= sc.getCSV()+"\n";
+	    for(StructMethod sm : sMethod) buf += sm.getCSV()+"\n";
+	    
+	    return buf;
+	}
+	
 	public StructClass getsClass() {
 		return sClass;
 	}

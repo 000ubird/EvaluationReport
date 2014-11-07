@@ -25,13 +25,13 @@ public class StructClass {
 	
 	/**
 	 * クラスの情報をCSV形式の文字列にする
-	 * フォーマット(サンプル)-> Class | 修飾子 | クラス名 | 継承 | インターフェース |
+	 * フォーマット(サンプル)-> class | 修飾子 | クラス名 | 継承 | インターフェース |
 	 * @return CSV形式の文字列
 	 */
-	public String getCsv(){
+	public String getCSV(){
 		String buf = "";
 		for(Class<?> inter : interfaces) buf += inter+",";
-		return "Class,"+modifiers+","+name+","+inheritance+","+buf;
+		return "class,"+modifiers+","+name+",Extends "+inheritance+","+buf;
 	}
 	
 	/**
