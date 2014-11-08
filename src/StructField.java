@@ -19,7 +19,7 @@ public class StructField {
 	 */
 	public StructField(String name,Class<?> type,int mod){
 		this.name = name;
-		this.fieldType = type.getName();
+		this.fieldType = type.getSimpleName();
 		this.modifier = getModifierType(mod);
 	}
 	

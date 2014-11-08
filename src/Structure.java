@@ -35,14 +35,14 @@ public class Structure {
 	    }
 	    
 	    //コンストラクタ情報取得
-	    Constructor<?>[] constructors = c.getConstructors();
+	    Constructor<?>[] constructors = c.getDeclaredConstructors();
 	    for(Constructor<?> constructor : constructors){
 	    	Class<?>[] paramType = constructor.getParameterTypes();
 	    	sConst.add(new StructConstructor(paramType));
 	    }
 	    
 	    //メソッド情報取得
-		Method[] methods = c.getMethods();
+		Method[] methods = c.getDeclaredMethods();
 		for(Method method : methods){
 			String name = method.getName();							//メソッド名取得
 			String returnType = method.getReturnType().getName();	//返り値の型を取得

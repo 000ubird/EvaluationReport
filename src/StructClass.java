@@ -17,7 +17,7 @@ public class StructClass {
 	 * @param c	ƒNƒ‰ƒX
 	 */
 	public StructClass(Class<?> c) {
-		name = c.getName();
+		name = c.getSimpleName();
 		modifiers = getModifierType(c.getModifiers());
 		inheritance = c.getSuperclass();
 		interfaces = c.getInterfaces();
@@ -31,7 +31,7 @@ public class StructClass {
 	public String getCSV(){
 		String buf = "";
 		for(Class<?> inter : interfaces) buf += inter+",";
-		return "class,"+modifiers+","+name+",Extends "+inheritance+","+buf;
+		return "Class,"+modifiers+","+name+",Extends "+inheritance+","+buf;
 	}
 	
 	/**
