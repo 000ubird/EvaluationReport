@@ -7,12 +7,10 @@ public class Main {
 	
 	public static void main(String[] args) throws Exception{
 		//クラスファイル読み込み
-	    ClassLoader ansLoader  = ReadClass.createClassLoader(ANS_CLASSPATH);
-	    ClassLoader testLoader = ReadClass.createClassLoader(TEST_CLASSPATH);
-	    Class<?> ansClass  = Class.forName(ANS_CLASSNAME, true, ansLoader);
-	    Class<?> testClass = Class.forName(TEST_CLASSNAME,true, testLoader);
+	    Class<?> ansClass = ReadClass.createClass(ANS_CLASSNAME, ANS_CLASSPATH);
+	    Class<?> testClass= ReadClass.createClass(TEST_CLASSNAME, TEST_CLASSPATH);
 	    
-	    //評価オブジェクト生成
+	    //評価実行
 	    Evaluate e = new Evaluate(ansClass, testClass);
 	    e.calcScore();
 	    e.outCSV();
