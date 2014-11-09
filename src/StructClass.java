@@ -99,6 +99,6 @@ public class StructClass {
 		String buf = "";
 		for(Class<?> inter : interfaces) buf += inter+" , ";
 		return "Class Name => "+name+" , Modifier => "+modifiers+
-				" , SuperClass => "+inheritance+" , Interfaces => "+ buf;
+				" , SuperClass => "+inheritance+" , Interfaces => "+ buf+score;
 	}
 }

@@ -30,7 +30,7 @@ public class Score {
 	 * @return　スコア情報のCSV書式文字列
 	 */
 	public String getCSV(){
-		return point+"/"+maxPoint;
+		return point+" | "+maxPoint;
 	}
 	
 	@Override
