@@ -51,51 +51,6 @@ public class Structure {
 		}
 	}
 	
-	/**
-	 * クラス構造情報を1つのCSV形式の文字列にまとめたデータを取得する
-	 * @return それぞれの情報をまとめたCSV形式の文字列
-	 */
-	public String getCSV(){
-		String buf = "";
-		
-	    buf += sClass.getScoreCSV()+"\n";
-	    for(StructField sf : sField) buf += sf.getScoreCSV()+"\n";
-	    for(StructConstructor sc : sConst) buf+= sc.getCSV()+"\n";
-	    for(StructMethod sm : sMethod) buf += sm.getCSV()+"\n";
-	    
-	    return buf;
-	}
-	
-	public void calcClassScore(Structure testStructure){
-		sClass.calcScore(testStructure.getsClass());
-	}
-	
-	/**
-	 * 指定したフィールド名が存在するかを判定する
-	 * @param name	探したいフィールドの名前
-	 * @return		判定結果
-	 */
-	public boolean isSameField(String name) {
-		for (StructField sf : sField) {
-			if(sf.hasField(name)) return true;
-		}
-		return false;
-	}
-	
-	/**
-	 * フィールドのスコア情報を取得する
-	 * 正解クラス構造オブジェクトで呼び出す
-	 * @param testStructure	テストするクラス構造オブジェクト
-	 */
-	public void calcFieldScore(Structure testStructure){
-		for(int i=0; i<sField.size();i++){
-			if(testStructure.isSameField(sField.get(i).getName())){
-				sField.get(i).calcScore(testStructure.getsField().get(i));
-				System.out.println(sField.get(i));
-			}
-		}
-	}
-	
 	public StructClass getsClass() {
 		return sClass;
 	}
@@ -110,6 +65,83 @@ public class Structure {
 
 	public ArrayList<StructMethod> getsMethod() {
 		return sMethod;
+	}
+	
+	/**
+	 * クラス構造情報を1つのCSV形式の文字列にまとめたデータを取得する
+	 * @return それぞれの情報をまとめたCSV形式の文字列
+	 */
+	public String getCSV(){
+		String buf = "";
+		
+	    buf += sClass.getScoreCSV()+"\n";
+	    for(StructField sf : sField) buf += sf.getScoreCSV()+"\n";
+	    for(StructConstructor sc : sConst) buf+= sc.getCSV()+"\n";
+	    for(StructMethod sm : sMethod) buf += sm.getScoreCSV()+"\n";
+	    
+	    return buf;
+	}
+	
+	/**
+	 * 指定したフィールドが存在するかを判定する
+	 * @param name	探したいフィールドの名前
+	 * @return		判定結果
+	 */
+	public boolean isSameField(String name){
+		for (StructField sf : sField) {
+			if(sf.hasField(name)) return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * 指定したメソッドが存在するか判定する
+	 * @param name 探したいメソッド名
+	 * @return	判定結果
+	 */
+	public boolean isSameMethod(String name){
+		for(StructMethod sm : sMethod) {
+			if(sm.hasMethod(name)) return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * クラス構造のスコアを算出する
+	 * 呼び出す構造オブジェクトが正解オブジェクト。
+	 * @param testStructure テストする構造オブジェクト
+	 */
+	public void calcClassScore(Structure testStructure){
+		sClass.calcScore(testStructure.getsClass());
+		System.out.println(sClass);
+	}
+	
+	/**
+	 * フィールドのスコア情報を算出する
+	 * 正解クラス構造オブジェクトで呼び出す
+	 * @param testStructure	テストするクラス構造オブジェクト
+	 */
+	public void calcFieldScore(Structure testStructure){
+		for(int i=0; i<sField.size();i++){
+			if(testStructure.isSameField(sField.get(i).getName())){
+				sField.get(i).calcScore(testStructure.getsField().get(i));
+				System.out.println(sField.get(i));
+			}
+		}
+	}
+	
+	/**
+	 * メソッドのスコア情報を算出する
+	 * 正解クラス構造オブジェクトで呼び出す
+	 * @param testStructure テストするクラス構造オブジェクト
+	 */
+	public void calcMethodScore(Structure testStructure){
+		for(int i=0;i<sMethod.size();i++){
+			if(testStructure.isSameMethod(sMethod.get(i).getname())){
+				sMethod.get(i).calcScore(testStructure.getsMethod().get(i));
+				System.out.println(sMethod.get(i));
+			}
+		}
 	}
 	
 	@Override
