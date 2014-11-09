@@ -29,12 +29,13 @@ public class StructField {
 	 * @return 修飾子を表す文字列
 	 */
 	public static String getModifierType(int mod){
-		String buf = "none";
+		String buf = "none";	//アクセス修飾子情報無し
 		
-		if(Modifier.isPublic(mod)) buf = "public";
-		if(Modifier.isPrivate(mod)) buf = "private";
-		if(Modifier.isProtected(mod)) buf = "protected";
-		if(Modifier.isFinal(mod)) buf = "final";
+		if(Modifier.isPublic(mod))		buf = "public";
+		if(Modifier.isPrivate(mod))		buf = "private";
+		if(Modifier.isProtected(mod))	buf = "protected";
+		if(Modifier.isFinal(mod))		buf = "final";
+		if(Modifier.isStatic(mod))		buf = "static";
 		
 		return buf;
 	}
