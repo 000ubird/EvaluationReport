@@ -1,16 +1,16 @@
-Class,none,LineSegment,Extends class java.lang.Object,interface Group,
-Field,none,Point,start
-Field,none,Point,end
-Field,none,Point,movelength
-Field,none,Point,center
-Field,none,Point,original_s
-Field,none,Point,original_e
-Field,none,double,linelength
-Field,none,int,count_tm
-Field,none,int,count_ts
-Field,none,int,number
-Field,none,LineSegment[],group
-Field,none,int,checkcount
+Class,none,LineSegment,Extends class java.lang.Object,interface Group,,0/0
+Field,none,Point,start,0/0
+Field,none,Point,end,0/0
+Field,none,Point,movelength,0/0
+Field,none,Point,center,0/0
+Field,none,Point,original_s,0/0
+Field,none,Point,original_e,0/0
+Field,none,double,linelength,0/0
+Field,static,int,count_tm,0/0
+Field,static,int,count_ts,0/0
+Field,static,int,number,0/0
+Field,static,LineSegment[],group,0/0
+Field,static,int,checkcount,0/0
 Constructor,param -> Point,param -> Point,
 Method,void,add
 Method,int,param -> LineSegment,equals
@@ -20,5 +20,5 @@ Method,void,delete
 Method,void,param -> double,param -> double,move
 Method,void,shrink
 Method,void,param -> LineSegment,testMove
-Method,void,viewgroup
 Method,void,param -> LineSegment,testShrink
+Method,void,viewgroup

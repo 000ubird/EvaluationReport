@@ -1,23 +1,23 @@
-Class,none,LineSegment,Extends class java.lang.Object,interface Group,
-Field,none,int,total
-Field,none,LineSegment[],group
-Field,none,Point,start
-Field,none,Point,end
-Field,none,int,number
+Class,none,LineSegment,Extends class java.lang.Object,interface Group,,3/4
+Field,static,int,total,0/0
+Field,static,LineSegment[],group,0/3
+Field,none,Point,start,2/3
+Field,none,Point,end,2/3
+Field,none,int,number,1/3
 Constructor,param -> double,param -> double,
 Constructor,param -> double,param -> double,param -> double,param -> double,
 Method,void,add
 Method,boolean,param -> LineSegment,equals
 Method,java.lang.String,toString
+Method,void,close
 Method,double,length
 Method,void,delete
-Method,void,close
-Method,Point,getMedian
 Method,void,param -> double,param -> double,move
-Method,boolean,isNotSame
-Method,void,shrink
-Method,double,getGrade
-Method,java.lang.String,makeData
 Method,void,setNumber
+Method,void,shrink
 Method,boolean,checkUpperBound
+Method,Point,getMedian
+Method,double,getGrade
+Method,boolean,isNotSame
 Method,void,show
+Method,java.lang.String,makeData

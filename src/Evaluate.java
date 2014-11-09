@@ -16,6 +16,9 @@ public class Evaluate {
 	    Structure s1 = new Structure(ansClass);
 	    Structure s2 = new Structure(testClass);
 	    
+	    s1.calcFieldScore(s2);
+	    s1.calcClassScore(s2);
+	    
 	    //CSV文字列出力テスト
 	    CSVFileWrite.out(s1.getCSV(),"AnsClassInfo");
 	    CSVFileWrite.out(s2.getCSV(),"TestClassInfo");
