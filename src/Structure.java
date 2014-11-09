@@ -69,15 +69,30 @@ public class Structure {
 	
 	/**
 	 * クラス構造情報を1つのCSV形式の文字列にまとめたデータを取得する
-	 * @return それぞれの情報をまとめたCSV形式の文字列
+	 * @return それぞれの情報をまとめたスコア情報付きCSV形式の文字列
 	 */
-	public String getCSV(){
+	public String getScoreCSV(){
 		String buf = "";
 		
 	    buf += sClass.getScoreCSV()+"\n";
 	    for(StructField sf : sField) buf += sf.getScoreCSV()+"\n";
 	    for(StructConstructor sc : sConst) buf+= sc.getScoreCSV()+"\n";
 	    for(StructMethod sm : sMethod) buf += sm.getScoreCSV()+"\n";
+	    
+	    return buf;
+	}
+	
+	/**
+	 * クラス構造情報を1つのCSV形式の文字列にまとめたデータを取得する
+	 * @return それぞれの情報をまとめたCSV形式の文字列
+	 */
+	public String getCSV(){
+		String buf = "";
+		
+	    buf += sClass.getCSV()+"\n";
+	    for(StructField sf : sField) buf += sf.getCSV()+"\n";
+	    for(StructConstructor sc : sConst) buf+= sc.getCSV()+"\n";
+	    for(StructMethod sm : sMethod) buf += sm.getCSV()+"\n";
 	    
 	    return buf;
 	}
