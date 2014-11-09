@@ -11,6 +11,8 @@ public class StructClass {
 	private String modifiers;		//修飾子
 	private Class<?> inheritance;	//継承
 	private Class<?>[] interfaces;	//インターフェース
+	private Score score;			//得点情報
+	private static int MAX_SCORE = 4;	//スコアの最高得点
 	
 	/**
 	 * クラスを引数に取ってコンストラクタを生成
@@ -21,6 +23,7 @@ public class StructClass {
 		modifiers = getModifierType(c.getModifiers());
 		inheritance = c.getSuperclass();
 		interfaces = c.getInterfaces();
+		score = new Score();
 	}
 	
 	/**
@@ -35,11 +38,19 @@ public class StructClass {
 	}
 	
 	/**
+	 * スコア情報付きのCSV文字列を取得する
+	 * @return CSV形式の文字列
+	 */
+	public String getScoreCSV(){
+		return getCSV()+","+score.getCSV();
+	}
+	
+	/**
 	 * クラスの修飾子の種類を文字列で返す
 	 * @param mods 修飾子の種類を表すint型の数値
 	 * @return 修飾子を表す文字列
 	 */
-	public static String getModifierType(int mods){
+	private static String getModifierType(int mods){
 		String buf = "none";
 		
 		if(Modifier.isPublic(mods)) buf = "public";
@@ -47,6 +58,22 @@ public class StructClass {
 		if(Modifier.isFinal(mods)) buf = "final";
 		
 		return buf;
+	}
+	
+	/**
+	 * クラス構造情報を引数に取ってスコアを算出する
+	 * 算出したスコアはフィールドのスコア情報に保持される
+	 * @param sc クラス構造オブジェクト
+	 */
+	public void calcScore(StructClass sc){
+		int currentScore = 0;
+		
+		if(this.name.equals(sc.name)) currentScore++;
+		if(this.modifiers.equals(sc.modifiers)) currentScore++;
+		if(this.inheritance.equals(sc.inheritance)) currentScore++;
+		if(this.interfaces.equals(sc.interfaces)) currentScore++;
+		
+		score = new Score(currentScore,MAX_SCORE);
 	}
 	
 	@Override
