@@ -1,27 +1,41 @@
-
+/**
+ * 正解構造オブジェクトとテストする構造オブジェクトを持つ
+ * 評価クラスです
+ * @author bp12084
+ *
+ */
 public class Evaluate {
-	private static String ANS_CLASSPATH  = "./bin/ans/";	//正解クラスファイルのディレクトリ
-	private static String ANS_CLASSNAME  = "LineSegment";	//正解クラスファイルの名前
-	private static String TEST_CLASSPATH = "./bin/1/";		//テストするクラスファイルのディレクトリ
-	private static String TEST_CLASSNAME = "LineSegment";	//テストするクラスファイルの名前
+	private Structure answer;	//正解構造オブジェクト
+	private Structure test;		//テスト構造オブジェクト
+	private static String ANS_FILE_NAME = "AnsClassInfo";
+	private static String TEST_FILE_NAME = "TestClassInfo";
 	
-	public static void main(String[] args) throws Exception{
-		//クラスファイル読み込み
-	    ClassLoader ansLoader  = ReadClass.createClassLoader(ANS_CLASSPATH);
-	    ClassLoader testLoader = ReadClass.createClassLoader(TEST_CLASSPATH);
-	    Class<?> ansClass  = Class.forName(ANS_CLASSNAME, true, ansLoader);
-	    Class<?> testClass = Class.forName(TEST_CLASSNAME,true, testLoader);
-	    
-	    //クラス情報生成
-	    Structure s1 = new Structure(ansClass);
-	    Structure s2 = new Structure(testClass);
-	    
-	    s1.calcClassScore(s2);
-	    s1.calcFieldScore(s2);
-	    s1.calcMethodScore(s2);
-	    
-	    //CSV文字列出力テスト
-	    CSVFileWrite.out(s1.getCSV(),"AnsClassInfo");
-	    CSVFileWrite.out(s2.getCSV(),"TestClassInfo");
+	/**
+	 * クラスを引数に取りそれぞれの構造オブジェクトを生成する
+	 * デフォルトコンストラクタ
+	 * @param answer 模範解答クラス
+	 * @param test   テストクラス
+	 */
+	public Evaluate(Class<?> answer,Class<?> test){
+		this.answer = new Structure(answer);
+		this.test = new Structure(test);
+	}
+	
+	/**
+	 * 2つの構造オブジェクトからスコアを計算する
+	 */
+	public void calcScore(){
+		answer.calcClassScore(test);
+		answer.calcFieldScore(test);
+		answer.calcConstructorScore(test);
+		answer.calcMethodScore(test);
+	}
+	
+	/**
+	 * CSVファイルをそれぞれ出力する
+	 */
+	public void outCSV(){
+	    CSVFileWrite.out(answer.getScoreCSV(),ANS_FILE_NAME);
+	    CSVFileWrite.out(test.getCSV(),TEST_FILE_NAME);
 	}
 }
