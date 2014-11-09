@@ -59,11 +59,37 @@ public class Structure {
 		String buf = "";
 		
 	    buf += sClass.getCSV()+"\n";
-	    for(StructField sf : sField) buf += sf.getCSV()+"\n";
+	    for(StructField sf : sField) buf += sf.getScoreCSV()+"\n";
 	    for(StructConstructor sc : sConst) buf+= sc.getCSV()+"\n";
 	    for(StructMethod sm : sMethod) buf += sm.getCSV()+"\n";
 	    
 	    return buf;
+	}
+	
+	/**
+	 * 指定したフィールド名が存在するかを判定する
+	 * @param name	探したいフィールドの名前
+	 * @return		判定結果
+	 */
+	public boolean isSameField(String name) {
+		for (StructField sf : sField) {
+			if(sf.hasField(name)) return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * フィールドのスコア情報を取得する
+	 * 正解クラス構造オブジェクトで呼び出す
+	 * @param testStrucure	テストするクラス構造オブジェクト
+	 */
+	public void calcFieldScore(Structure testStrucure){
+		for(int i=0; i<sField.size();i++){
+			if(testStrucure.isSameField(sField.get(i).getName())){
+				sField.get(i).calcScore(testStrucure.getsField().get(i));
+				System.out.println(sField.get(i));
+			}
+		}
 	}
 	
 	public StructClass getsClass() {
