@@ -85,7 +85,7 @@ public class StructField {
 	 * @return CSVŒ`Ž®‚Ì•¶Žš—ñ
 	 */
 	public String getScoreCSV(){
-		return "Field,"+modifier+","+fieldType+","+name+","+score.getCSV();
+		return getCSV()+","+score.getCSV();
 	}
 	
 	@Override
