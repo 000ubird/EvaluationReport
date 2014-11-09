@@ -25,6 +25,14 @@ public class Score {
 		maxPoint = max;
 	}
 	
+	/**
+	 * CSV形式で出力する文字列を返す
+	 * @return　スコア情報のCSV書式文字列
+	 */
+	public String getCSV(){
+		return point+"/"+maxPoint;
+	}
+	
 	@Override
 	public String toString() {
 		return "Score [point=" + point + ", maxPoint=" + maxPoint + "]";
