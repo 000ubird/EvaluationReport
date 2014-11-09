@@ -35,7 +35,7 @@ public class StructField {
 	 * @param mod 修飾子の種類を表す数値
 	 * @return 修飾子を表す文字列
 	 */
-	public static String getModifierType(int mod){
+	private static String getModifierType(int mod){
 		String buf = "none";	//アクセス修飾子情報無し
 		
 		if(Modifier.isPublic(mod))		buf = "public";
@@ -60,7 +60,7 @@ public class StructField {
 	/**
 	 * フィールド構造情報を引数に取ってスコアを算出する
 	 * 算出したスコアはフィールドのスコア情報に保持される
-	 * @param sf フィールド情報
+	 * @param sf フィールド構造オブジェクト
 	 */
 	public void calcScore(StructField sf){
 		int currentScore = 0;
@@ -68,7 +68,7 @@ public class StructField {
 		if(this.fieldType.equals(sf.fieldType))  currentScore++;
 		if(this.modifier.equals(sf.modifier))	 currentScore++;
 		
-		this.score = new Score(currentScore,MAX_SCORE);
+		score = new Score(currentScore,MAX_SCORE);
 	}
 	
 	/**
