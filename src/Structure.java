@@ -76,7 +76,7 @@ public class Structure {
 		
 	    buf += sClass.getScoreCSV()+"\n";
 	    for(StructField sf : sField) buf += sf.getScoreCSV()+"\n";
-	    for(StructConstructor sc : sConst) buf+= sc.getCSV()+"\n";
+	    for(StructConstructor sc : sConst) buf+= sc.getScoreCSV()+"\n";
 	    for(StructMethod sm : sMethod) buf += sm.getScoreCSV()+"\n";
 	    
 	    return buf;
@@ -90,6 +90,18 @@ public class Structure {
 	public boolean isSameField(String name){
 		for (StructField sf : sField) {
 			if(sf.hasField(name)) return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * 指定したコンストラクタが存在するかを判定する
+	 * @param name	探したいコンストラクタの名前
+	 * @return		判定結果
+	 */
+	public boolean isSameConstructor(StructConstructor testSc){
+		for(StructConstructor sc : sConst){
+			if(sc.equals(testSc)) return true;
 		}
 		return false;
 	}
@@ -126,6 +138,20 @@ public class Structure {
 			if(testStructure.isSameField(sField.get(i).getName())){
 				sField.get(i).calcScore(testStructure.getsField().get(i));
 				System.out.println(sField.get(i));
+			}
+		}
+	}
+	
+	/**
+	 * コンストラクタのスコア情報を算出する
+	 * 正解クラス構造オブジェクトで呼び出す
+	 * @param testStructure	テストするコンストラクタ構造オブジェクト
+	 */
+	public void calcConstructorScore(Structure testStructure){
+		for(int i=0; i<sConst.size();i++){
+			if(testStructure.isSameConstructor(sConst.get(i))){
+				sConst.get(i).calcScore(testStructure.getsConst().get(i));
+				System.out.println(sConst.get(i));
 			}
 		}
 	}
