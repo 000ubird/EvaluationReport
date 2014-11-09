@@ -10,6 +10,8 @@ public class StructMethod {
 	private String name;			//フィールド名
 	private String returnType;		//返り値の型
 	private Class<?>[] paramType;	//引数の型
+	private Score score;			//得点情報
+	private static int MAX_SCORE = 3;	//スコアの最高得点
 	
 	/**
 	 * 引数有りのコンストラクタ
@@ -21,6 +23,11 @@ public class StructMethod {
 		this.name = name;
 		this.returnType = returnType;
 		this.paramType = paramType;
+		score = new Score();
+	}
+	
+	public String getname() {
+		return name;
 	}
 	
 	/**
@@ -32,6 +39,38 @@ public class StructMethod {
 		String buf = "";
 		for(Class<?> c :paramType) buf += "param -> "+c.getName()+",";
 		return "Method,"+returnType+","+buf+name;
+	}
+	
+	/**
+	 * スコア情報付きのCSV文字列を取得する
+	 * @return CSV形式の文字列
+	 */
+	public String getScoreCSV(){
+		return getCSV()+","+score.getCSV();
+	}
+	
+	/**
+	 * 指定したメソッド名と一致するメソッドであるかを判定する
+	 * @param name 調べたいメソッド名
+	 * @return     一致したらtrue,一致しなかったらfalse
+	 */
+	public boolean hasMethod(String name){
+		if(this.name.equals(name)) return true;
+		else return false;
+	}
+	
+	/**
+	 * メソッド構造情報を引数に取ってスコアを算出する
+	 * 算出したスコアはフィールドのスコア情報に保持される
+	 * @param sm メソッド構造オブジェクト
+	 */
+	public void calcScore(StructMethod sm){
+		int currentScore = 0;
+		if(this.name.equals(sm.name)) 				currentScore++;
+		if(this.returnType.equals(sm.returnType)) 	currentScore++;
+		if(this.paramType.equals(sm.paramType)) 	currentScore++;
+		
+		score = new Score(currentScore,MAX_SCORE);
 	}
 	
 	@Override
@@ -55,6 +94,6 @@ public class StructMethod {
 		String buf = "";
 		for(Class<?> c : paramType) buf += c.getName() + ",";
 		
-		return "Method Name => "+name+" , return => "+returnType+" , paramType => "+buf+"\n";
+		return "Method Name => "+name+" , return => "+returnType+" , paramType => "+buf+score;
 	}
 }
