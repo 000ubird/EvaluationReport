@@ -1,5 +1,5 @@
 
-public class Main {
+public class Evaluate {
 	private static String ANS_CLASSPATH  = "./bin/ans/";	//正解クラスファイルのディレクトリ
 	private static String ANS_CLASSNAME  = "LineSegment";	//正解クラスファイルの名前
 	private static String TEST_CLASSPATH = "./bin/1/";		//テストするクラスファイルのディレクトリ
